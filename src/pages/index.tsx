@@ -2,16 +2,20 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import {
   EmailShareButton,
-  FacebookShareButton,
   LineShareButton,
   TelegramShareButton,
   WhatsappShareButton,
-  WorkplaceShareButton,
 } from "react-share";
+
+import { EmailIcon, LineIcon, TelegramIcon, WhatsappIcon } from "react-share";
+
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -20,16 +24,56 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="bg-[url('/csm_Seidenader-BubbleX-1155_d6fdcaf537.jpg')] h-screen w-screen bg-cover flex items-center justify-center">
-        <div className="flex flex-col grow bg-white max-w-7xl rounded-sm shadow-md px-2">
-          <div className="text-3xl font-semibold">We are Körber</div>
-          <div>Thank you very much for participating in usability testing!</div>
-          <div>Do you want to do the test on this device?</div>
-          <div>Or would you like to send the link to a mail address?</div>
-          <button>Start the test here</button>
-          <WhatsappShareButton url="http://www.google.com">
-            test
-          </WhatsappShareButton>
+      <main className="bg-[url('/csm_Seidenader-BubbleX-1155_d6fdcaf537.jpg')] h-screen w-screen bg-cover bg-center flex flex-col">
+        <div className="p-2">
+          <Image
+            src="/korber-logo.svg"
+            alt="Koerber logo"
+            height={70}
+            width={70}
+          />
+        </div>
+        <div className="grow flex items-center justify-center">
+          <div className="flex flex-col bg-white w-11/12 rounded-sm shadow-md">
+            <div className="text-3xl font-semibold px-4 py-2">
+              Userbility Testing
+            </div>
+            <hr />
+            <div className="px-4 space-y-4 py-2">
+              <div>We appreciate your participation!</div>
+              <div>
+                <div className="py-2">
+                  Do you want to do the test on this device?
+                </div>
+                <button
+                  className="w-full text-center border-2 border-blue-500 rounded-full py-1 text-blue-500 font-semibold"
+                  onClick={() => {
+                    router.push("https://t.maze.co/152987299");
+                  }}
+                >
+                  Start the test
+                </button>
+              </div>
+
+              <div>
+                <div>Or would you like to send the link to do it later?</div>
+                <div className="flex justify-center space-x-2 py-2">
+                  <EmailShareButton url="https://t.maze.co/152987299">
+                    <EmailIcon size={45} round={true} />
+                  </EmailShareButton>
+                  <WhatsappShareButton url="https://t.maze.co/152987299">
+                    <WhatsappIcon size={45} round={true} />
+                  </WhatsappShareButton>
+                  <TelegramShareButton url="https://t.maze.co/152987299">
+                    <TelegramIcon size={45} round={true} />
+                  </TelegramShareButton>
+                  <LineShareButton url="https://t.maze.co/152987299">
+                    <LineIcon size={45} round={true} />
+                  </LineShareButton>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </>
