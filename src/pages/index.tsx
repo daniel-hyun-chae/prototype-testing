@@ -1,6 +1,13 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  LineShareButton,
+  TelegramShareButton,
+  WhatsappShareButton,
+  WorkplaceShareButton,
+} from "react-share";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +27,9 @@ export default function Home() {
           <div>Do you want to do the test on this device?</div>
           <div>Or would you like to send the link to a mail address?</div>
           <button>Start the test here</button>
-          <button>Send to...</button>
+          <WhatsappShareButton url="http://www.google.com">
+            test
+          </WhatsappShareButton>
         </div>
       </main>
     </>
