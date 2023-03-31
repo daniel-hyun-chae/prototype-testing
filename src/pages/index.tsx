@@ -11,11 +11,14 @@ import { EmailIcon, LineIcon, TelegramIcon, WhatsappIcon } from "react-share";
 
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import ClipboardCopy from "./components/ClipboardCopy";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const router = useRouter();
+
   return (
     <>
       <Head>
@@ -56,20 +59,26 @@ export default function Home() {
               </div>
 
               <div>
-                <div>Or would you like to send the link to do it later?</div>
-                <div className="flex justify-center space-x-2 py-2">
-                  <EmailShareButton url="https://t.maze.co/152987299">
-                    <EmailIcon size={45} round={true} />
-                  </EmailShareButton>
-                  <WhatsappShareButton url="https://t.maze.co/152987299">
-                    <WhatsappIcon size={45} round={true} />
-                  </WhatsappShareButton>
-                  <TelegramShareButton url="https://t.maze.co/152987299">
-                    <TelegramIcon size={45} round={true} />
-                  </TelegramShareButton>
-                  <LineShareButton url="https://t.maze.co/152987299">
-                    <LineIcon size={45} round={true} />
-                  </LineShareButton>
+                <div className="pb-2">
+                  Or would you like to send the link to do it later?
+                </div>
+                <div className="flex flex-col justify-center items-center space-y-2">
+                  <ClipboardCopy copyText="https://t.maze.co/152987299" />
+                  <div>OR</div>
+                  <div className="flex justify-center space-x-2">
+                    <EmailShareButton url="https://t.maze.co/152987299">
+                      <EmailIcon size={45} round={true} />
+                    </EmailShareButton>
+                    <WhatsappShareButton url="https://t.maze.co/152987299">
+                      <WhatsappIcon size={45} round={true} />
+                    </WhatsappShareButton>
+                    <TelegramShareButton url="https://t.maze.co/152987299">
+                      <TelegramIcon size={45} round={true} />
+                    </TelegramShareButton>
+                    <LineShareButton url="https://t.maze.co/152987299">
+                      <LineIcon size={45} round={true} />
+                    </LineShareButton>
+                  </div>
                 </div>
               </div>
             </div>
