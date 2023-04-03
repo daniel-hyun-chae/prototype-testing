@@ -51,19 +51,6 @@ export default function Home() {
             <hr />
             <div className="px-4 space-y-4 py-2">
               <div>We appreciate your participation!</div>
-              <div>
-                <div className="py-2">
-                  Do you want to do the test on this device?
-                </div>
-                <button
-                  className="w-full text-center border-2 border-blue-500 rounded-full py-1 text-blue-500 font-semibold"
-                  onClick={() => {
-                    router.push(testUrl);
-                  }}
-                >
-                  Start the test
-                </button>
-              </div>
               {testSize < 1024 ||
                 (testSize > 1024 && width && width >= 1024 && (
                   <div>
