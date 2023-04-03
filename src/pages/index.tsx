@@ -20,6 +20,7 @@ export default function Home() {
   const router = useRouter();
   const testUrl = process.env.NEXT_PUBLIC_TEST_URL as string;
   const testSize = parseInt(process.env.NEXT_PUBLIC_TEST_WIDTH || "1024");
+  console.log(testSize);
   const { width } = useWindowSize();
 
   if (!testUrl) {
@@ -51,29 +52,28 @@ export default function Home() {
             <hr />
             <div className="px-4 space-y-4 py-2">
               <div>We appreciate your participation!</div>
-              {testSize < 1024 ||
-                (testSize > 1024 && width && width >= 1024 && (
-                  <div>
-                    <div className="py-2">
-                      Do you want to do the test on this device?
-                    </div>
-                    <button
-                      className="w-full text-center border-2 border-blue-500 rounded-full py-1 text-blue-500 font-semibold"
-                      onClick={() => {
-                        router.push(testUrl);
-                      }}
-                    >
-                      Start the test
-                    </button>
-                  </div>
-                ))}
-              {testSize > 1024 && width && width < 1024 && (
+
+              {testSize > 1024 && width && width < 1024 ? (
                 <div>Current device is too small to perform the test.</div>
+              ) : (
+                <div>
+                  <div className="py-2">
+                    Do you want to do the test on this device?
+                  </div>
+                  <button
+                    className="w-full text-center border-2 border-blue-500 rounded-full py-1 text-blue-500 font-semibold"
+                    onClick={() => {
+                      router.push(testUrl);
+                    }}
+                  >
+                    Start the test
+                  </button>
+                </div>
               )}
 
               <div>
                 <div className="pb-2">
-                  {testSize > 1024 && width && width < 480
+                  {testSize > 1024 && width && width < 1024
                     ? "Please copy the link and perform the test in desktop"
                     : "Or would you like to send the link to do it later?"}
                 </div>
